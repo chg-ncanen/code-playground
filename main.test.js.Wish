@@ -1,0 +1,23 @@
+
+function getFeatureFlag() {
+    return true;
+}
+
+
+describe('test suite', () => { 
+
+    beforeAll(() => {
+        featureFlag = getFeatureFlag(); // replace this with the call to get the feature flag
+        console.log("Before ALL");
+
+        // Produces error: Cannot add a test after tests have started running. Tests must be defined synchronously
+        if (featureFlag)
+        {
+          const sum = require('./sumtest1.js');
+        } else {
+          const sum = require('./sumtest2.js');
+        }  
+    }),
+
+    it('Just a test', () => { console.log("test"); })
+  });
